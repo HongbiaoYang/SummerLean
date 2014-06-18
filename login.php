@@ -44,11 +44,7 @@ a {text-decoration:none;}
 	<h2 style="font-size:18px;">User Login</h2>
 
 		<form method="post" name="frmLogin" id="frmLogin">
-<<<<<<< HEAD
-		 <div class="errorMessage" align="center"><?php echo $errorMessage; ?></div>
-=======
 		 <div class="errorMessage" align="center"><?php echo $errorMessage;?></div>
->>>>>>> 3c8ce8b4e69bf2e8fc056bdbcccd9040632bda0d
          <strong>Email: </strong><input name="txtUserName" type="text" id="txtUserName"  size="20" maxlength="100"><br/>
          <strong>Password : </strong><input name="txtPassword" type="password"  id="txtPassword"  size="20" maxlength="100"><br/>
          <br/>  <input name="btnLogin" type="submit" id="btnLogin" value="Login" class="button">
@@ -58,15 +54,9 @@ a {text-decoration:none;}
 	</td>
   </tr>
 </table>
-<<<<<<< HEAD
 
-	<?php 
 	
-		echo "<font color='red'  size='3'>".$changeMessage."</font>";
-	?>
-=======
-	<h4 color="red"><font size="3" color="red"><?php echo $changeMessage;?></font></h4>
->>>>>>> 3c8ce8b4e69bf2e8fc056bdbcccd9040632bda0d
+	<font size="3" color="red"><?php echo $changeMessage;?></font>
 	<h5>If you have already chosen your projects, use your own email/password to login;<br>
 		  Otherwise, use the uniform default email/pasword to login</h5>
 </div>

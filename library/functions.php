@@ -78,6 +78,7 @@ function doLogout($name = 10)
 			
 	header('Location: login.php');
 	exit;
+	}
 }
 
 function doLogoutWithAlert($msg)
@@ -329,7 +330,7 @@ $perpage 每页显示记录数
 $thispage 当前页
 $url 地址形式
 ------------------------------*/
-function page($total, $perpage, $thispage, $url){
+function page($total, $perpage, $thispage, $url) {
     $pagecount = ceil($total / $perpage);
     $centernum = 10; //中间分页显示链接的个数
     $page = '';
@@ -397,4 +398,3 @@ function page($total, $perpage, $thispage, $url){
 
 
 ?>
-

@@ -38,12 +38,7 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 
 <div style="prepend-1 span-18 last">
 <p>&nbsp;</p>
-<<<<<<< HEAD
-<p align="center" style="font-size:16px;font-weight:bold;">Welcome to Project Selection System
-	</p>
-=======
 <p align="center" style="font-size:16px;font-weight:bold;">Welcome to Project Selection System</p>
->>>>>>> 3c8ce8b4e69bf2e8fc056bdbcccd9040632bda0d
 <p align="center" style="font-family:Verdana, Arial, Helvetica, sans-serif;font-size:14px; margin-bottom:40px;">
 	</p>
 
