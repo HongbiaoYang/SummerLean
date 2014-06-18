@@ -6,7 +6,7 @@ checkUser();
 
 $content = 'main.php';
 
-$pageTitle = 'Smart Kitchen';
+$pageTitle = 'Lean Summer Program';
 $script = array();
 
 //require_once('FirePHPCore/fb.php');

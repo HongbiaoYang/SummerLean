@@ -18,8 +18,14 @@ $view = (isset($_GET['v']) && $_GET['v'] != '') ? $_GET['v'] : '';
 switch ($view) {
 	case 'USER' :
 		$content 	= 'user/list.php';		
-		$pageTitle 	= 'Asset Management - View Users';
+		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
 		break;
+		
+	case 'LIST' :
+		$content 	= 'user/history.php';		
+		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
+		break;
+		
 
 	case 'HRWR' :
 		$content 	= 'hardware/list.php';		

@@ -7,18 +7,25 @@ if (!defined('WEB_ROOT')) {
 
 
 
-$changeMessage = (isset($_GET['info']) && $_GET['info'] != '') ? $_GET['info'] : '&nbsp;';
+$fkey = (isset($_GET['key']) && $_GET['key'] != '') ? $_GET['key'] : '&nbsp;';
+$fvalue = (isset($_GET['value']) && $_GET['value'] != '') ? $_GET['value'] : '&nbsp;';
 
-$condition = "";
-if(isset($_POST['submit']))
+if ($fkey == '' || $fkey == '&nbsp;')
 {
-	$cate = $_POST["cate"];
-	$ckey = $_POST["ckey"];
-
-
-	$condition = "And s.".$cate." = ".$ckey;
-	
+	$condition = "";
 }
+else 
+{
+	if ($fkey == "firstname" || $fkey == "lastname")
+	{
+		$condition = " And s.".$fkey." = '".$fvalue."'";	
+	}
+	else 
+	{
+		$condition = " And s.".$fkey." = ".$fvalue;	
+	}
+}
+
 
 
 $sql ="SELECT s.firstname, s.lastname, s.email, p1.title AS Choice1, 
@@ -28,7 +35,7 @@ $sql ="SELECT s.firstname, s.lastname, s.email, p1.title AS Choice1,
 				JOIN tbl_projects p2 ON ( s.Choice2 = p2.Projindex )
 				JOIN tbl_projects p3 ON ( s.Choice3 = p3.Projindex )
 				JOIN tbl_projects p4 ON ( s.Choice4 = p4.Projindex )
-				WHERE 1 And s.StuIndex != 0".$condition;
+				WHERE 1 And s.rank = 0".$condition;
 
 $result = dbQuery($sql);
 
@@ -63,12 +70,12 @@ $limit = $perpage*($thispage-1); //start position
 
 
 
-<form action= <?php echo $_SERVER['PHP_SELF']; ?> method="post">
+<form action="<?php echo WEB_ROOT; ?>user/processUser.php?action=list" method="post" enctype="multipart/form-data" name="frmAddUser" id="frmAddUser">
 <div class="prepend-1 span-17">
 <table>
 <tr>
 <td colspan = "2">
-<strong>List of students and projects informatoin<?php echo "-".$condition."-".$_SERVER['PHP_SELF'];?></strong>
+<strong>List of students and projects informatoin</strong>
 <br>
 The list of students, and the choices of the projects they have chosen.
 </td>
@@ -79,7 +86,7 @@ The list of students, and the choices of the projects they have chosen.
 <tr>
 	<td>
 	<select name="cate" onchange="showOption(this.value)">
-		<option value="">--Choose Type--</option>
+		<option value="">--Show All--</option>
 		<option value="firstname">By First Name</option>
 		<option value="lastname">By Last Name</option>
 		<option value="choice1">By 1st Choice</option>
@@ -106,7 +113,7 @@ $sql = "SELECT s.firstname, s.lastname, s.email, p1.title AS Choice1,
 				JOIN tbl_projects p2 ON ( s.Choice2 = p2.Projindex )
 				JOIN tbl_projects p3 ON ( s.Choice3 = p3.Projindex )
 				JOIN tbl_projects p4 ON ( s.Choice4 = p4.Projindex )
-				WHERE 1 And s.StuIndex != 0 order by firstname asc limit ".$limit.",".$perpage;
+				WHERE 1 And s.rank = 0 ".$condition." order by timestamp asc limit ".$limit.",".$perpage;
 		
 $result = dbQuery($sql);
 
@@ -123,6 +130,7 @@ $result = dbQuery($sql);
    
   </tr>
 <?php
+$order = 1;
 while($row = dbFetchAssoc($result)) {
 	extract($row);
 	
@@ -150,14 +158,14 @@ while($row = dbFetchAssoc($result)) {
   </tr>
  </table> 
 
-	 <tr><td colspan = "3"><?php page($total, $perpage, $thispage,"?v=HISTORYORDER&page=");?></td></tr>
+	 <tr><td colspan = "3"><?php page($total, $perpage, $thispage,"?v=LIST&page=");?></td></tr>
 	 <br>
      <tr><td colspan="1" align="right">
      	<input name="btnSendOrder" type="button" id="btnSendOrder" value="Back" class="button" onClick="BacktoList()">
      	</td></tr>
 
  
-  <FONT COLOR="blue"><?php echo $changeMessage?></FONT><br>
+	<!--  <FONT COLOR="blue"><?php echo "-".$fkey."-".$fvalue."-";?></FONT><br> !-->
 <p>&nbsp;</p>
 </div>
 
