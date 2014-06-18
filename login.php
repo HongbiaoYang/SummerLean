@@ -44,7 +44,7 @@ a {text-decoration:none;}
 	<h2 style="font-size:18px;">User Login</h2>
 
 		<form method="post" name="frmLogin" id="frmLogin">
-		 <div class="errorMessage" align="center"><?php echo $errorMessage; echo $changeMessage;?></div>
+		 <div class="errorMessage" align="center"><?php echo $errorMessage;?></div>
          <strong>Email: </strong><input name="txtUserName" type="text" id="txtUserName"  size="20" maxlength="100"><br/>
          <strong>Password : </strong><input name="txtPassword" type="password"  id="txtPassword"  size="20" maxlength="100"><br/>
          <br/>  <input name="btnLogin" type="submit" id="btnLogin" value="Login" class="button">
@@ -54,7 +54,7 @@ a {text-decoration:none;}
 	</td>
   </tr>
 </table>
-
+	<h4 color="red"><font size="3" color="red"><?php echo $changeMessage;?></font></h4>
 	<h5>If you have already chosen your projects, use your own email/password to login;<br>
 		  Otherwise, use the uniform default email/pasword to login</h5>
 </div>

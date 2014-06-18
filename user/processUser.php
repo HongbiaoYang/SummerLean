@@ -78,7 +78,7 @@ function addUser()
 	
 		$rs = dbQuery($sql);
 
-		header('Location: ../index.php?logout');
+		header('Location: ../index.php?logout&info='.$email);
 	}
 }
 
