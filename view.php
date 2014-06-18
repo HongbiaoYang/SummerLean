@@ -15,7 +15,7 @@ fb($view, "view");
 switch ($view) {
 	case 'adduser' :
 		$content 	= 'user/add.php';		
-		$pageTitle 	= 'Asset Management - Add Users';
+		$pageTitle 	= 'Lean Summer Program - Choose Projects';
 		break;
 
 	case 'addvendor' :

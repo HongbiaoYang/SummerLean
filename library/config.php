@@ -9,9 +9,9 @@ session_start();
 // database connection config
 //$dbHost = 'mydesk.desktops.utk.edu';
 $dbHost = 'localhost';
-$dbUser = 'root';
-$dbPass = 'root';
-$dbName = 'db_myasset';
+$dbUser = 'lean';
+$dbPass = 'lean2014';
+$dbName = 'lean';
 
 // setting up the web root and server root for
 // this shopping cart application

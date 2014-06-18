@@ -26,16 +26,16 @@ function doLogin()
 		$errorMessage = 'You must enter the password';
 	} else {
 		// check the database and see if the username and password combo do match
-		$sql = "SELECT uid, uname, utype
-		        FROM tbl_users 
-				WHERE uname = '$userName' AND pwd = '$password'";
+		$sql = "SELECT StuIndex, Email, Password, LastName, Rank
+		        FROM tbl_students
+				WHERE Email = '$userName' AND Password = '$password'";
 		$result = dbQuery($sql);
 	
 		if (dbNumRows($result) == 1) {
 			$row = dbFetchAssoc($result);
-			$_SESSION['asset_user_id'] = $row['uid'];
-			$_SESSION['asset_user_name'] = $row['uname'];
-			$_SESSION['asset_user_type'] = $row['utype'];
+			$_SESSION['asset_user_id'] = $row['StuIndex'];
+			$_SESSION['asset_user_name'] = $row['Email'];
+			$_SESSION['asset_user_type'] = $row['Rank'];
 
 			// now that the user is verified we move on to the next page
             // if the user had been in the admin pages before we move to
@@ -63,10 +63,13 @@ function doLogout()
 {
 	if (isset($_SESSION['asset_user_id'])) {
 		unset($_SESSION['asset_user_id']);
-		session_unregister('asset_user_id');
+
+		$_SESSION['asset_user_id'] = '';
+		$_SESSION['login_return_url'] = 'menu.php?v=USER';
 	}
-		
-	header('Location: login.php');
+	
+			
+	header('Location: login.php?info=testlogin');
 	exit;
 }
 

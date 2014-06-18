@@ -26,7 +26,10 @@ function dbFetchArray($result, $resultType = MYSQL_NUM) {
 
 function dbFetchAssoc($result)
 {
-	return mysqli_fetch_assoc($result);
+	if ($result != FALSE)
+		return mysqli_fetch_assoc($result);
+		
+	
 }
 
 function dbFetchRow($result) 

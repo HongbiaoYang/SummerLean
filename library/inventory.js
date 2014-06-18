@@ -76,9 +76,15 @@ function BacktoList()
 {
 
 	// alert('head back?');
-	window.location.href = 'menu.php?v=SHOPLIST';
+	window.location.href = 'index.php';
 
 }
+
+function refineResult()
+{
+	window.location.href = 'menu.php?v=HISTORYORDER';
+}
+
 
 function HistoryOrder()
 {
