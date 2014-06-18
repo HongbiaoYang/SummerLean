@@ -3,10 +3,6 @@ if (!defined('WEB_ROOT')) {
 	exit;
 }
 
-
-
-
-
 $fkey = (isset($_GET['key']) && $_GET['key'] != '') ? $_GET['key'] : '&nbsp;';
 $fvalue = (isset($_GET['value']) && $_GET['value'] != '') ? $_GET['value'] : '&nbsp;';
 

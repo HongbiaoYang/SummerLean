@@ -5,23 +5,12 @@ if (!defined('WEB_ROOT')) {
 
 $errorMessage = (isset($_GET['error']) && $_GET['error'] != '') ? $_GET['error'] : '&nbsp;';
 
-$sql0 = "SELECT u.uid, u.uname, u.email, u.fname, u.lname
-	FROM tbl_users u
-	WHERE u.uid = ".$_SESSION['asset_user_id'].
-	" ORDER BY uname;";
 
-$sql = "Select s.StuIndex, s.Email, s.FirstName, s.LastName, s.LastName2, 
-				s.MiddleName, s.fullName,  s.Choice1, s.Choice2, s.Choice3, s.Choice4
-				From tbl_students s
-				Where s.StuIndex = ".$_SESSION['asset_user_id'];
-
-
-$result = dbQuery($sql);
 
 ?> 
 <div class="prepend-1 span-17">
 <p>&nbsp;</p>
-<h2 class="catHead">User Management</h2>
+<h2 class="catHead">Project Selection</h2>
 <p><img src="images/users.png" class="left"/>
 	<p class="errorMessage"><?php echo $errorMessage; ?></p>
 <strong>This page shows the projects selection information</strong>
