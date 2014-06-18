@@ -21,7 +21,7 @@ $result = dbQuery($sql);
 ?> 
 <div class="prepend-1 span-17">
 <p>&nbsp;</p>
-<h2 class="catHead">User Management</h2>
+<h2 class="catHead">Projects Selection</h2>
 <p><img src="images/users.png" class="left"/>
 	<p class="errorMessage"><?php echo $errorMessage; ?></p>
 <strong>This page shows the projects selection information</strong>
