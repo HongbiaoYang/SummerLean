@@ -7,7 +7,11 @@ function checkUser()
 	}
 	
 	if (isset($_GET['logout'])) {
-		doLogout();
+		if (isset($_GET['info']) && $_GET['info'] != '')
+		{
+			$name = "Congradulations! Please use <u>".$_GET['info']."</u> to log in!";
+		}
+			doLogout($name);
 	}
 	
 	if (isset($_GET['success'])) {
@@ -64,15 +68,13 @@ function doLogin()
 /*
 	Logout a user
 */
-function doLogout()
+function doLogout($name = 10)
 {
 	if (isset($_SESSION['asset_user_id'])) {
 		unset($_SESSION['asset_user_id']);
 
 		$_SESSION['asset_user_id'] = '';
 		$_SESSION['login_return_url'] = 'menu.php?v=USER';
-
-	}
 			
 	header('Location: login.php');
 	exit;
