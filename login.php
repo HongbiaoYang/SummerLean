@@ -16,7 +16,7 @@ if (isset($_POST['txtUserName'])) {
 ?>
 <html>
 <head>
-<title>Asset Management - Login</title>
+<title>Lean Summer Program - Login</title>
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1">
 <link href="<?php echo WEB_ROOT;?>css/screen.css" rel="stylesheet" type="text/css">
 <link href="<?php echo WEB_ROOT;?>css/menu.css" rel="stylesheet" type="text/css">

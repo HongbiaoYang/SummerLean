@@ -20,12 +20,12 @@ switch ($view) {
 
 	case 'addvendor' :
 		$content 	= 'vendor/add.php';		
-		$pageTitle 	= 'Asset Management - Add Vendor';
+		$pageTitle 	= 'Lean Summer Program - Choose Projects';
 		break;
 		
 	case 'addcat' :
 		$content 	= 'category/add.php';		
-		$pageTitle 	= 'Asset Management - Add catgegory';
+		$pageTitle 	= 'Lean Summer Program - Choose Projects';
 		break;	
 
 	case 'search' :

@@ -25,6 +25,11 @@ switch ($view) {
 		$content 	= 'user/history.php';		
 		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
 		break;
+
+	case 'CNTC' :
+		$content 	= 'user/contact.php';		
+		$pageTitle 	= 'Lean Summer Project - Contact Us';
+		break;
 		
 
 	case 'HRWR' :
