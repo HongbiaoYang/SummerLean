@@ -56,7 +56,7 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 
 <div class="catBox">
 <img src="<?php echo WEB_ROOT; ?>images/goback.png" class="cImage" />
-<a href="http://utlean.utk.edu">Go Back</a>
+<a href="http://utlean.utk.edu/current">Go Back</a>
 <p>Go back to the UT lean main page of Lean Summer Program</p>
 
 </div>
