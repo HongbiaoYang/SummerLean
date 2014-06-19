@@ -76,17 +76,10 @@ function addUser()
 							$cname, $choice1, $choice2, $choice3, $choice4, '$dob', '$sem', $ewrite,
 							$elisten, $espeak, '$gender','$univ', '$maj', $gpa, NOW())";
 	
-<<<<<<< HEAD
-		dbQuery($sql);
-		//header('Location: ../menu.php?v=USER');
-		
-		echo '<script type="text/javascript">alert('.$_POST["txtEmail"].');</script>';
-		header('Location: ../index.php?success='.$email);
-=======
-		$rs = dbQuery($sql);
 
-		header('Location: ../index.php?logout&info='.$email);
->>>>>>> 3c8ce8b4e69bf2e8fc056bdbcccd9040632bda0d
+		dbQuery($sql);
+	
+		header('Location: ../index.php?success='.$email);
 	}
 }
 
