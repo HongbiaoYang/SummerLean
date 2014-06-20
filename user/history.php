@@ -46,7 +46,7 @@ else
 	$thispage = $_GET["page"];
 }
 
-$perpage = 10; // records per page
+$perpage = 200; // records per page
 $limit = $perpage*($thispage-1); //start position
 
 ?> 
