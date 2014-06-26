@@ -36,6 +36,16 @@ switch ($view) {
 		$pageTitle 	= 'Lean Summer Project - Change Your Password';
 		break;
 
+	case 'HOME' :
+		$content 	= 'index.php';		
+		$pageTitle 	= 'Lean Summer Project - Welcome Home!';
+		break;
+		
+	case 'ADD' :
+		$content 	= 'user/add.php';		
+		$pageTitle 	= 'Lean Summer Project - Register New Account!';
+		break;
+
 	case 'CNTC' :
 		$content 	= 'user/contact.php';		
 		$pageTitle 	= 'Lean Summer Project - Contact Us';

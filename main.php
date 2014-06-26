@@ -47,14 +47,14 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 
 <div style="span-18">
 
-<?php if ($_SESSION["asset_user_type"] == 3)
+<?php if ($_SESSION["asset_user_type"] == 3)		// show team leaders the team info
 {
  echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/team-icon.png\" class=\"cImage\" />
 <a href=\"menu.php?v=TEAM\">View Your Team</a>
 <p>View your team members and the company / projects</p>
 </div>";
 }
-else if ($_SESSION["asset_user_type"] == 0)
+else if ($_SESSION["asset_user_type"] == 0)		// show students project / teamleader info
 {
 	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/users.png\" class=\"cImage\" />
 <a href=\"menu.php?v=USER\">View Your Project</a>
@@ -64,7 +64,7 @@ else if ($_SESSION["asset_user_type"] == 0)
 }
 
 
-if ($_SESSION["asset_user_type"] != 2)
+if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // eveybody can change password except admin[2] and utlean[1] (non leader participants)
 {
 	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/password.png\" class=\"cImage\" />
 <a href=\"menu.php?v=PWD\">Change Password</a>
@@ -74,7 +74,7 @@ if ($_SESSION["asset_user_type"] != 2)
 }
 ?>
 
-<?php if ($_SESSION["asset_user_type"] >= 2)
+<?php if ($_SESSION["asset_user_type"] >= 2)	// only teamleader and admin can see list
 {
  echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/view.png\" class=\"cImage\" />
 <a href=\"menu.php?v=LIST\">View List</a>
@@ -82,6 +82,21 @@ if ($_SESSION["asset_user_type"] != 2)
 </div>";
 }
 ?>
+
+
+<?php if ($_SESSION["asset_user_type"] == 1)	// only utlean see registration
+{
+ echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/create.png\" class=\"cImage\" />
+<a href=\"menu.php?v=ADD\">Create New Account</a>
+<p>View the student list and their choices of projects</p>
+</div>";
+}
+?>
+
+
+
+
+
 
 <div class="catBox">
 <img src="<?php echo WEB_ROOT; ?>images/goback.png" class="cImage" />

@@ -15,7 +15,7 @@
 				
 	?>
 		<li><a href="<?php echo WEB_ROOT; ?>" title="Home">Home</a></li>
-		<li><a href="<?php echo WEB_ROOT; ?>menu.php?v=<?php if ($rank == 0) {echo "USER";} else if ($rank == 3){echo "TEAM";} else {echo "LIST";} ?>" title="View Project Information">View Project</a></li>
+		<li><a href="<?php echo WEB_ROOT; ?><?php if ($rank == 0) {echo "menu.php?v=USER";} else if ($rank == 3){echo "menu.php?v=TEAM";} ?>" title="View Project Information">View Project</a></li>
 		<li><a href="<?php echo WEB_ROOT; ?>" title="Home"><?php echo  "Welcome, ".$fullname;?></a></li>
 		
 
