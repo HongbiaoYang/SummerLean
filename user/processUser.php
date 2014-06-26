@@ -23,6 +23,10 @@ switch ($action) {
 	case 'list' :
 		listUsers();
 		break;
+		
+	case 'pwd' :
+		changePassword();
+		break;
 
 	default :
 	    // if action is not defined or unknown
@@ -82,6 +86,34 @@ function addUser()
 		header('Location: ../index.php?success='.$email);
 	}
 }
+
+
+function changePassword()
+{
+	$oldpass = $_POST["oldpass"];
+	$newpass1 = $_POST["newpass1"];
+	
+	$sql = "Select email from tbl_students "
+					. " where stuIndex = ". $_SESSION['asset_user_id']
+					. " and password = \"". $oldpass."\"";
+					
+	$result = dbQuery($sql);
+	
+	if (dbNumRows($result) == 1) {
+		
+		 $usql = "UPDATE `tbl_students` SET `Password`= \"".$newpass1."\" "
+    . "WHERE 1 and stuindex = " . $_SESSION['asset_user_id'];
+    dbQuery($usql);
+    
+		header('Location: ../index.php?changed=true');
+	}
+	else 
+	{
+		header('Location: ../index.php?changed=false');
+	}
+	
+}
+
 
 /*
 	Modify a user, it will mdify, edit user and able to update user details

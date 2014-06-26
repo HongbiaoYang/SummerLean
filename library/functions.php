@@ -16,8 +16,30 @@ function checkUser()
 	
 	if (isset($_GET['success'])) {
 		
-		doLogoutWithAlert($_GET['success']);
+		$msg = $_GET['success'];
+		$msg = urlencode("Congradulations! Registration succeed!! <br>
+		Use <u>".$msg."</u> to login and view your projects.");
+			
+		doLogoutWithAlert($msg);
 	}
+	
+	if (isset($_GET['changed'])) {
+		
+		$msg = $_GET['changed'];		
+		
+		if ($msg == 'true')
+		{
+			$msg = urlencode("Congradulations! Password Changed!! <br>
+			Use your new password to login and view your projects.");
+		}
+		else 
+		{
+			$msg = urlencode("Password change failed! <br>
+			Please log in and try again, or contact utlean@utk.edu!");
+		}
+			
+			doLogoutWithAlert($msg);
+		}
 }
 
 function doLogin()
@@ -40,6 +62,9 @@ function doLogin()
 				WHERE Email = '$userName' AND Password = '$password'";
 		$result = dbQuery($sql);
 	
+		//$tsql = 
+	
+	
 		if (dbNumRows($result) == 1) {
 			$row = dbFetchAssoc($result);
 			$_SESSION['asset_user_id'] = $row['StuIndex'];
@@ -56,7 +81,8 @@ function doLogin()
 				header('Location: index.php');
 				exit;
 			}
-		} else {
+		}
+		 else {
 			$errorMessage = 'Wrong username or password';
 		}		
 			
@@ -74,7 +100,15 @@ function doLogout($name = 10)
 		unset($_SESSION['asset_user_id']);
 
 		$_SESSION['asset_user_id'] = '';
-		$_SESSION['login_return_url'] = 'menu.php?v=USER';
+		
+		if ($_SESSION['asset_user_type'] == 0)
+		{
+			$_SESSION['login_return_url'] = 'index.php';
+		}
+		else 
+		{
+			$_SESSION['login_return_url'] = 'index.php';
+		}
 			
 	header('Location: login.php');
 	exit;
@@ -87,13 +121,11 @@ function doLogoutWithAlert($msg)
 		unset($_SESSION['asset_user_id']);
 
 		$_SESSION['asset_user_id'] = '';
-		$_SESSION['login_return_url'] = 'menu.php?v=USER';
+		
+		$_SESSION['login_return_url'] = 'index.php';
 
 	}
-
-	$msg = urlencode("Congradulations! Registration succeed!! <br>
-		Use <u>".$msg."</u> to login and view your choices.");
-			
+		
 	header('Location: login.php?info='.$msg);
 	exit;
 }

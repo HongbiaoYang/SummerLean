@@ -47,22 +47,34 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 
 <div style="span-18">
 
+<?php if ($_SESSION["asset_user_type"] == 3)
+{
+ echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/team-icon.png\" class=\"cImage\" />
+<a href=\"menu.php?v=TEAM\">View Your Team</a>
+<p>View your team members and the company / projects</p>
+</div>";
+}
+else if ($_SESSION["asset_user_type"] == 0)
+{
+	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/users.png\" class=\"cImage\" />
+<a href=\"menu.php?v=USER\">View Your Project</a>
+<p>View your project and the teamleader's information</p>
+</div>";
+	
+}
 
-<div class="catBox">
-<img src="<?php echo WEB_ROOT; ?>images/users.png" class="cImage" />
-<a href="<?php echo WEB_ROOT; ?>menu.php?v=USER">Choose Project</a>
-<p>Register an account and choose the projects you want to participate</p>
-</div>
 
-<div class="catBox">
-<img src="<?php echo WEB_ROOT; ?>images/goback.png" class="cImage" />
-<a href="http://utlean.utk.edu/current">Go Back</a>
-<p>Go back to the UT lean main page of Lean Summer Program</p>
+if ($_SESSION["asset_user_type"] != 2)
+{
+	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/password.png\" class=\"cImage\" />
+<a href=\"menu.php?v=PWD\">Change Password</a>
+<p>Change Your current Password for better security</p>
+</div>";
 
-</div>
+}
+?>
 
-
-<?php if ($_SESSION["asset_user_type"] == 2)
+<?php if ($_SESSION["asset_user_type"] >= 2)
 {
  echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/view.png\" class=\"cImage\" />
 <a href=\"menu.php?v=LIST\">View List</a>
@@ -71,7 +83,12 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 }
 ?>
 
+<div class="catBox">
+<img src="<?php echo WEB_ROOT; ?>images/goback.png" class="cImage" />
+<a href="http://utlean.utk.edu/current">Go Back</a>
+<p>Go back to the UT lean main page of Lean Summer Program</p>
 
+</div>
 
 
 </div>

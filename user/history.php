@@ -6,6 +6,8 @@ if (!defined('WEB_ROOT')) {
 $fkey = (isset($_GET['key']) && $_GET['key'] != '') ? $_GET['key'] : '&nbsp;';
 $fvalue = (isset($_GET['value']) && $_GET['value'] != '') ? $_GET['value'] : '&nbsp;';
 
+$condition = "";
+
 if ($fkey == '' || $fkey == '&nbsp;')
 {
 	$condition = "";
@@ -16,22 +18,32 @@ else
 	{
 		$condition = " And s.".$fkey." = '".$fvalue."'";	
 	}
-	else 
+	else if ($fkey == "ComIndex")
 	{
-		$condition = " And s.".$fkey." = ".$fvalue;	
+		$condition = " And c.".$fkey." = ".$fvalue;	
+	}
+	else if ($fkey == "ProjIndex")
+	{
+		$condition = " And p.projIndex = ".$fvalue;	
+	}
+	else if ($fkey == "Team")
+	{
+		$condition = " And t.leaderindex = ".$fvalue;	
+	}
+	else if ($fkey == "Country")
+	{
+		$condition = " And n.code = ".$fvalue;			
 	}
 }
 
 
 
-$sql ="SELECT s.firstname, s.lastname, s.email, p1.title AS Choice1, 
-				p2.title AS Choice2, p3.title AS Choice3, p4.title AS Choice4
-				FROM tbl_students s
-				JOIN tbl_projects p1 ON ( s.Choice1 = p1.Projindex )
-				JOIN tbl_projects p2 ON ( s.Choice2 = p2.Projindex )
-				JOIN tbl_projects p3 ON ( s.Choice3 = p3.Projindex )
-				JOIN tbl_projects p4 ON ( s.Choice4 = p4.Projindex )
-				WHERE 1 And s.rank = 0".$condition;
+$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.email as s_email,"
+			  . " p.title, c.companyname, n.name as countryname, t.firstname as t_first, "
+			  . " t.lastname as t_last FROM tbl_students s, tbl_projects p, tbl_countries n, " 
+			  . " tbl_companies c, tbl_teamleaders t  "
+			  . " WHERE 1 And s.team = p.projIndex and p.ComIndex = c.ComIndex and  "
+			  . " c.teamleader = t.leaderindex and n.code = s.nationality and s.rank = 0 ".$condition;
 
 $result = dbQuery($sql);
 
@@ -72,8 +84,12 @@ $limit = $perpage*($thispage-1); //start position
 <tr>
 <td colspan = "2">
 <strong>List of students and projects informatoin</strong>
+<?php //echo $sql;
+?>
 <br>
-The list of students, and the choices of the projects they have chosen.
+The list of students, and the choices of the projects they have chosen. 
+<?php // echo $condition;
+?>
 </td>
 <td>
 <p><img src="<?php echo WEB_ROOT; ?>images/order-icon.png" class="right"/>
@@ -82,14 +98,14 @@ The list of students, and the choices of the projects they have chosen.
 <tr>
 	<td>
 	<select name="cate" onchange="showOption(this.value)">
-		<option value="">--Show All--</option>
+		<option value="">--Show All--</option>		
+		<option value="ProjIndex">By Project</option>
+		<option value="ComIndex">By Company</option>
+		<option value="Team">By Teamleader</option>
+		<option value="Country">By Country</option>
 		<option value="firstname">By First Name</option>
 		<option value="lastname">By Last Name</option>
-		<option value="choice1">By 1st Choice</option>
-		<option value="choice2">By 2nd Choice</option>
-		<option value="choice3">By 3rd Choice</option>
-		<option value="choice4">By 4th Choice</option>
-	</select>
+		</select>
 	</td>
 		
 	<td colspan="1" align="left"><div id="type"></div>	</td>
@@ -102,16 +118,9 @@ The list of students, and the choices of the projects they have chosen.
 <?php
 
 
-$sql = "SELECT s.firstname, s.lastname, s.email, p1.title AS Choice1, 
-				p2.title AS Choice2, p3.title AS Choice3, p4.title AS Choice4
-				FROM tbl_students s
-				JOIN tbl_projects p1 ON ( s.Choice1 = p1.Projindex )
-				JOIN tbl_projects p2 ON ( s.Choice2 = p2.Projindex )
-				JOIN tbl_projects p3 ON ( s.Choice3 = p3.Projindex )
-				JOIN tbl_projects p4 ON ( s.Choice4 = p4.Projindex )
-				WHERE 1 And s.rank = 0 ".$condition." order by timestamp asc limit ".$limit.",".$perpage;
+$nsql = $sql. " order by t_last asc limit ".$limit.",".$perpage;
 		
-$result = dbQuery($sql);
+$result = dbQuery($nsql);
 
 ?>
 
@@ -119,10 +128,11 @@ $result = dbQuery($sql);
   <tr align="center" id="listTableHeader"> 
    <td>FirstName</td>
    <td>LastName</td>
-   <td>Choice1</td>
-   <td>Choice2</td>
-   <td>Choice3</td>
-   <td>Choice4</td>
+   <td>Project</td>
+   <td>Company</td>
+   <td>Country</td>
+   <td>Teamleader</td>
+   
    
   </tr>
 <?php
@@ -138,12 +148,12 @@ while($row = dbFetchAssoc($result)) {
 	$i += 1;
 ?>
    <tr class="<?php echo $class; ?>"> 
-   <td align="center"><?php echo $firstname; ?></td>
-   <td align="center"><?php echo $lastname; ?></td>
-   <td align="center"><?php echo $Choice1; ?></td>
-   <td align="center"><?php echo $Choice2; ?></td>
-   <td align="center"><?php echo $Choice3; ?></td>
-   <td align="center"><?php echo $Choice4; ?></td>
+   <td align="center"><?php echo $s_first; ?></td>
+   <td align="center"><?php echo $s_last; ?></td>
+   <td align="center"><?php echo $title; ?></td>
+   <td align="center"><?php echo $companyname; ?></td>
+   <td align="center"><?php echo $countryname; ?></td>
+   <td align="center"><?php echo $t_first." ".$t_last; ?></td>
   </tr>
   <?php 
   } // end of while

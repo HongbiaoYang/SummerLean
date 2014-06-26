@@ -17,13 +17,23 @@ $view = (isset($_GET['v']) && $_GET['v'] != '') ? $_GET['v'] : '';
 
 switch ($view) {
 	case 'USER' :
-		$content 	= 'user/list.php';		
+		$content 	= 'user/list2.php';		
 		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
 		break;
 		
 	case 'LIST' :
 		$content 	= 'user/history.php';		
 		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
+		break;
+
+	case 'TEAM' :
+		$content 	= 'user/team.php';		
+		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
+		break;
+		
+	case 'PWD' :
+		$content 	= 'user/password.php';		
+		$pageTitle 	= 'Lean Summer Project - Change Your Password';
 		break;
 
 	case 'CNTC' :

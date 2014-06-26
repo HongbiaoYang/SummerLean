@@ -42,6 +42,21 @@ function checkAddUserForm()
 	}
 }
 
+function checkPassword()
+{
+	with (window.document.frmAddUser) {
+
+		if (newpass1.value == newpass2.value) {
+			submit();
+		}
+		else {
+			alert('Two passwords does not match!');
+			return;
+		}
+		
+	}
+}
+
 function addUser()
 {
 	window.location.href = 'view.php?v=adduser';

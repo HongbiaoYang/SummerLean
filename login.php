@@ -57,8 +57,8 @@ a {text-decoration:none;}
 
 	
 	<font size="3" color="red"><?php echo $changeMessage;?></font>
-	<h5>If you have already chosen your projects, use your own email/password to login;<br>
-		  Otherwise, use the uniform default email/pasword to login</h5>
+	<h5>Use your own email/password to login<br>
+		  </h5>
 </div>
 <div class="span-6">&nbsp;</div>
 <div class="prepend-5 span-15 append-4" style="background-color:#F8F8F8; border-top:dashed 1px #181818;">
