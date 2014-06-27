@@ -87,12 +87,12 @@ $limit = $perpage*($thispage-1); //start position
 <?php //echo $sql;
 ?>
 <br>
-The list of students, and the choices of the projects they have chosen. 
+You can view the list of student information by different category.
 <?php // echo $condition;
 ?>
 </td>
 <td>
-<p><img src="<?php echo WEB_ROOT; ?>images/order-icon.png" class="right"/>
+<p><img src="<?php echo WEB_ROOT; ?>images/filter.png" class="right"/>
 </td>
 </tr>
 <tr>
@@ -118,7 +118,7 @@ The list of students, and the choices of the projects they have chosen.
 <?php
 
 
-$nsql = $sql. " order by t_last asc limit ".$limit.",".$perpage;
+$nsql = $sql. " order by title asc limit ".$limit.",".$perpage;
 		
 $result = dbQuery($nsql);
 
