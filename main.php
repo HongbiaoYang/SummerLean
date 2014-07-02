@@ -56,7 +56,7 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 }
 else if ($_SESSION["asset_user_type"] == 0)		// show students project / teamleader info
 {
-	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/users.png\" class=\"cImage\" />
+	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/ico_projects.png\" class=\"cImage\" width=\"48\" />
 <a href=\"menu.php?v=USER\">View Your Project</a>
 <p>View your project and the teamleader's information</p>
 </div>";
@@ -93,8 +93,12 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 }
 ?>
 
+<div class="catBox">
+<img src="<?php echo WEB_ROOT; ?>images/bb.png" class="cImage" />
+<a target = "_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">Online Session</a>
+<p>Take your summer lean lectures online! (Begins on 10:00 AM EST)</p>
 
-
+</div>
 
 
 

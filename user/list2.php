@@ -12,7 +12,7 @@ $sql0 = "SELECT u.uid, u.uname, u.email, u.fname, u.lname
 
 $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
-				." s.FirstName as s_first, s.LastName as s_last, s.LastName2 as s_last2, "
+				." s.FirstName as s_first, s.netid, s.LastName as s_last, s.LastName2 as s_last2, "
 				." s.MiddleName as s_middle, s.fullName as s_full, n.name as country, "
 				." p.title as title, c.CompanyName as company "
 		    ."FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` , `tbl_companies` `c`, `tbl_countries` `n` "
@@ -28,7 +28,7 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 <div class="prepend-1 span-17">
 <p>&nbsp;</p>
 <h2 class="catHead">Projects Information</h2>
-<p><img src="images/users.png" class="left"/>
+<p><img src="images/ico_projects.png" class="left" width="72"/>
 	<p class="errorMessage"><?php echo $errorMessage; ?></p>
 <strong>This page shows the projects selection information</strong>
 <br/>
@@ -76,6 +76,13 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
  	<td><?php echo "Name on Certificate:";?></td>
  	<td align="center"><?php echo $s_full; ?></td>
  	</tr>
+ 	
+ 	<!--
+ 	<tr>
+ 	<td>Your <a target="_blank" href="https://oit.utk.edu/accounts/net-id/" >NetID</a>:</td>  
+ 	<td align="center"><?php echo $netid; ?>  (<a target="_blank" href="https://directory.utk.edu/setup">Setup Password</a>)</td>
+ 	</tr>
+	-->
 
 	<tr> <td colspan=2><hr></td></tr>
 	<td>Project</td>
@@ -86,8 +93,11 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
  	 	<td align="center"><?php echo $company; ?></td>
  	</tr>
 	
-
+	<tr> <td colspan=2><hr></td></tr>
+ 	<tr> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
+ 	<tr> <td>System Requirements</td><td>Click <a target="_blank" href="https://oit.utk.edu/instructional/tools/liveonline/Pages/Collaborate-Requirements.aspx">HERE</a> to see if your computer meets the system requirements</td></tr>
  	<tr> <td colspan=2><hr></td></tr>
+ 	
  	<tr>
 	<td><?php echo "Team Leader:";?></td>
  	 	<td align="center"><?php echo $t_first." ".$t_last; ?></td>

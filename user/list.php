@@ -16,7 +16,7 @@ $sql = "Select s.StuIndex, s.Email, s.FirstName, s.LastName, s.LastName2,
 				Where s.StuIndex = ".$_SESSION['asset_user_id'];
 
 
-$result = dbQuery($sql);
+$result = dbQuery($sql); 
 
 ?> 
 <div class="prepend-1 span-17">

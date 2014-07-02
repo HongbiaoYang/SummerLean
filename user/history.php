@@ -38,7 +38,7 @@ else
 
 
 
-$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.email as s_email,"
+$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.fullname as fname, s.email as s_email, s.netid, "
 			  . " p.title, c.companyname, n.name as countryname, t.firstname as t_first, "
 			  . " t.lastname as t_last FROM tbl_students s, tbl_projects p, tbl_countries n, " 
 			  . " tbl_companies c, tbl_teamleaders t  "
@@ -126,9 +126,10 @@ $result = dbQuery($nsql);
 
  <table  border="0" align="left" cellpadding="2" cellspacing="1" class="text">
   <tr align="center" id="listTableHeader"> 
-   <td>FirstName</td>
-   <td>LastName</td>
-   <td>Project</td>
+   <td>Name</td>
+   <td>NetID</td>
+   <td>Email</td>
+   <td>Project</td>   
    <td>Company</td>
    <td>Country</td>
    <td>Teamleader</td>
@@ -148,9 +149,10 @@ while($row = dbFetchAssoc($result)) {
 	$i += 1;
 ?>
    <tr class="<?php echo $class; ?>"> 
-   <td align="center"><?php echo $s_first; ?></td>
-   <td align="center"><?php echo $s_last; ?></td>
-   <td align="center"><?php echo $title; ?></td>
+   <td align="center"><?php echo $fname; ?></td>
+   <td align="center"><?php echo $netid; ?></td>
+   <td align="center"><?php echo $s_email; ?></td>
+   <td align="center"><?php echo $title; ?></td>   
    <td align="center"><?php echo $companyname; ?></td>
    <td align="center"><?php echo $countryname; ?></td>
    <td align="center"><?php echo $t_first." ".$t_last; ?></td>

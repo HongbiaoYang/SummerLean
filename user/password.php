@@ -33,7 +33,7 @@ $sql = "SELECT p.ProjIndex, p.Title, p.ComIndex, c.CompanyName
   
  </table>
  <p align="center"> 
-  <input name="btnAddUser" type="button"   class="button" id="btnAddUser" value="Confirm" onClick="checkPassword();" class="box">
+  <input name="btnAddUser" type="button"   class="button" id="btnAddUser" value="Confirms" onClick="checkPassword();" class="box">
   &nbsp;&nbsp;<input name="btnCancel" type="button" id="btnCancel" class="button"  value="Cancel" onClick="window.location.href='index.php';" class="box">  
  </p>
 </form>
