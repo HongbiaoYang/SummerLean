@@ -93,13 +93,14 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 }
 ?>
 
+<!--
 <div class="catBox">
 <img src="<?php echo WEB_ROOT; ?>images/bb.png" class="cImage" />
 <a target = "_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">Online Session</a>
 <p>Take your summer lean lectures online! (Begins on 10:00 AM EST)</p>
 
 </div>
-
+-->
 
 
 <div class="catBox">

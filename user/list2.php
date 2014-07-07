@@ -77,12 +77,10 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
  	<td align="center"><?php echo $s_full; ?></td>
  	</tr>
  	
- 	<!--
  	<tr>
  	<td>Your <a target="_blank" href="https://oit.utk.edu/accounts/net-id/" >NetID</a>:</td>  
  	<td align="center"><?php echo $netid; ?>  (<a target="_blank" href="https://directory.utk.edu/setup">Setup Password</a>)</td>
  	</tr>
-	-->
 
 	<tr> <td colspan=2><hr></td></tr>
 	<td>Project</td>

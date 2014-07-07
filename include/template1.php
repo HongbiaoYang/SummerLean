@@ -33,9 +33,11 @@ a {text-decoration:none;}
 <div class="span-24">
 	<?php include_once("mymenu.php"); ?>
 </div>
+
 <div class="span-5 border">
 	<?php include_once("left.php"); ?>
 </div>
+
 <div class="span-19 last">
 <?php
 require_once $content;	 

@@ -38,7 +38,7 @@ else
 
 
 
-$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.fullname as fname, s.email as s_email, s.netid, "
+$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.fullname as fname, s.email as s_email, s.netid, s.tnid, "
 			  . " p.title, c.companyname, n.name as countryname, t.firstname as t_first, "
 			  . " t.lastname as t_last FROM tbl_students s, tbl_projects p, tbl_countries n, " 
 			  . " tbl_companies c, tbl_teamleaders t  "
@@ -128,6 +128,7 @@ $result = dbQuery($nsql);
   <tr align="center" id="listTableHeader"> 
    <td>Name</td>
    <td>NetID</td>
+   <td>TN ID</td>
    <td>Email</td>
    <td>Project</td>   
    <td>Company</td>
@@ -151,6 +152,7 @@ while($row = dbFetchAssoc($result)) {
    <tr class="<?php echo $class; ?>"> 
    <td align="center"><?php echo $fname; ?></td>
    <td align="center"><?php echo $netid; ?></td>
+   <td align="center"><?php echo $tnid; ?></td>
    <td align="center"><?php echo $s_email; ?></td>
    <td align="center"><?php echo $title; ?></td>   
    <td align="center"><?php echo $companyname; ?></td>
