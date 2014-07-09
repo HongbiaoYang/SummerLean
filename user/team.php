@@ -6,9 +6,10 @@ if (!defined('WEB_ROOT')) {
 $errorMessage = (isset($_GET['error']) && $_GET['error'] != '') ? $_GET['error'] : '&nbsp;';
 
 $sql_leader = "SELECT t.firstname as t_first, t.lastname as t_last, "
-		. "t.email as t_email, t.pic as pic, t.biography as bio "
-    . " FROM tbl_students s, tbl_teamleaders t\n"
-    . " WHERE 1 And t.leaderindex = s.team and s.stuIndex = "
+		. " t.email as t_email, t.pic as pic, t.biography as bio, "
+		. " r.trip_amazon, r.trip_toyota, r.trip_vw, r.trip_aqua, r.trip_neyland "
+    . " FROM tbl_students s, tbl_teamleaders t, tbl_trips r \n"
+    . " WHERE 1 And t.leaderindex = s.team  and s.stuIndex = r.stuIndex and  s.stuIndex = "
     . $_SESSION['asset_user_id'];
 
 $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as company, "
@@ -19,6 +20,29 @@ $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as c
     . $_SESSION['asset_user_id'];
 
 
+
+$amazon = array(
+		0 => "TBD",
+);
+
+$toyota = array(
+		0 => "TBD",
+    1 => "Trip 1, leaves at 7 AM",
+    2 => "Trip 2, leaves at 9 AM",
+);
+
+
+$vw = array(
+		0 => "TBD",
+);
+
+$aquarium = array(
+		0 => "TBD",
+);
+
+$neyland = array(
+		0 => "TBD",
+);
 
 
 ?> 
@@ -62,6 +86,39 @@ $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as c
  		<td align="left"><?php echo $bio; ?></td>
  	</tr>
  	
+ 	 	<tr> <td colspan=2><hr></td></tr>
+	 	
+	 	
+	<td>Trip Toyota:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $toyota[$trip_toyota];
+ 	 		?></td>
+ 	</tr>
+ 		
+	<td>Trip Amazon:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $amazon[$trip_amazon];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Volkswagen:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $vw[$trip_vw];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Aquarium:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $aquarium[$trip_aqua];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Neyland Stadium:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $neyland[$trip_neyland];
+ 	 		?></td>
+ 	</tr>
+ 	
  	
  	
 </table>
@@ -82,7 +139,8 @@ $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as c
    
     <?php
  		$sql_stu =  "SELECT s.Email as s_email, s.fullName, c.name as country, s.Semester, s.EnglishWrite, "
-    . " s.EnglishListen, s.EnglishSpeak, s.Gender, s.University, s.Major, s.GPA "
+    . " s.EnglishListen, s.EnglishSpeak, s.Gender, s.University, s.Major, s.GPA, "
+    .	" s.netid, s.tnid  "
     . " FROM tbl_students s, tbl_countries c"
     . " WHERE 1 and s.nationality = c.code and s.rank = 0 and Team = ".$pid;
 		
@@ -94,10 +152,11 @@ $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as c
 	 	<tr align="center" id="listTableHeader"> 
 	 		<td>Full Name</td>
 	 		<td>Email</td>
+	 		<td>NetID</td>
+			<td>TNID</td>
 	 		<td>Country</td>
 	 		<td>Gender</td>
-	 		<td>University</td>
-			<td>Major</td>
+
 	 		</tr>
 	<?php
 		while ($row_stu = dbFetchAssoc($result_stu)) {
@@ -108,10 +167,11 @@ $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as c
 		<tr>
 		  <td><?php echo $fullName; ?></td>
 		  <td><a href="mailto:<?php echo $s_email; ?>"><?php echo $s_email; ?></a></td>
+		 	<td><?php echo $netid; ?></td>
+		  <td><?php echo $tnid; ?></td>
 		  <td><?php echo $country; ?></td>
 		  <td><?php echo $Gender; ?></td>
-		  <td><?php echo $University; ?></td>
-		  <td><?php echo $Major; ?></td>
+
 		  
 		</tr>
 

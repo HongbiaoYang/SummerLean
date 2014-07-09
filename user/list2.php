@@ -12,15 +12,40 @@ $sql0 = "SELECT u.uid, u.uname, u.email, u.fname, u.lname
 
 $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
-				." s.FirstName as s_first, s.netid, s.LastName as s_last, s.LastName2 as s_last2, "
-				." s.MiddleName as s_middle, s.fullName as s_full, n.name as country, "
+				." s.FirstName as s_first, s.netid, s.tnid, s.LastName as s_last, s.LastName2 as s_last2, "
+				." s.MiddleName as s_middle, s.fullName as s_full, r.trip_amazon, r.trip_toyota, r.trip_vw, "
+				." r.trip_aqua, r.trip_neyland, n.name as country, "
 				." p.title as title, c.CompanyName as company "
-		    ."FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` , `tbl_companies` `c`, `tbl_countries` `n` "
+		    ." FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` ,  "
+		    ." tbl_trips r, `tbl_companies` `c`, `tbl_countries` `n` "
 		    ."WHERE 1\n"
-		    ."AND t.LeaderIndex = c.teamleader and p.Comindex = c.ComIndex "
+		    ."AND t.LeaderIndex = c.teamleader and p.Comindex = c.ComIndex and r.stuindex = s.stuindex "
 		    ."and n.code = s.nationality and s.Team = p.projIndex and s.StuIndex = "
      		.$_SESSION['asset_user_id'];
 
+
+$amazon = array(
+		0 => "TBD",
+);
+
+$toyota = array(
+		0 => "TBD",
+    1 => "Trip 1, leaves at 7 AM",
+    2 => "Trip 2, leaves at 9 AM",
+);
+
+
+$vw = array(
+		0 => "TBD",
+);
+
+$aquarium = array(
+		0 => "TBD",
+);
+
+$neyland = array(
+		0 => "TBD",
+);
 
 
 
@@ -51,7 +76,7 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
     </tr>
 
   <tr class="<?php echo $class; ?>"> 
-  <td><?php echo "Full Name:";?></td>
+  <td width=148><?php echo "Full Name:";?></td>
    <td><?php 
    		echo ucfirst($s_first);
    		if ($s_middle) echo " ".$s_middle; 
@@ -78,9 +103,15 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
  	</tr>
  	
  	<tr>
- 	<td>Your <a target="_blank" href="https://oit.utk.edu/accounts/net-id/" >NetID</a>:</td>  
+ 	<td><a target="_blank" href="https://oit.utk.edu/accounts/net-id/" >NetID</a>:</td>  
  	<td align="center"><?php echo $netid; ?>  (<a target="_blank" href="https://directory.utk.edu/setup">Setup Password</a>)</td>
  	</tr>
+
+	<tr>
+	<td>TNID:</td>
+	<td><?php echo $tnid; ?></td>
+	
+	</tr>
 
 	<tr> <td colspan=2><hr></td></tr>
 	<td>Project</td>
@@ -90,6 +121,40 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
  	<td>Company</td>
  	 	<td align="center"><?php echo $company; ?></td>
  	</tr>
+	 	
+	 	<tr> <td colspan=2><hr></td></tr>
+	 	
+	 	
+	<td>Trip Toyota:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $toyota[$trip_toyota];
+ 	 		?></td>
+ 	</tr>
+ 		
+	<td>Trip Amazon:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $amazon[$trip_amazon];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Volkswagen:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $vw[$trip_vw];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Aquarium:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $aquarium[$trip_aqua];
+ 	 		?></td>
+ 	</tr>
+ 	
+	<td>Trip Neyland Stadium:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $neyland[$trip_neyland];
+ 	 		?></td>
+ 	</tr>
+ 	
 	
 	<tr> <td colspan=2><hr></td></tr>
  	<tr> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
