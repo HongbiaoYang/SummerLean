@@ -47,20 +47,34 @@ $_SESSION['login_return_url'] = $_SERVER['REQUEST_URI'];
 
 <div style="span-18">
 
-<?php if ($_SESSION["asset_user_type"] == 3)		// show team leaders the team info
+<?php 
+
+if ($_SESSION["asset_user_type"] == 3)		// show team leaders the team info
 {
- echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/team-icon.png\" class=\"cImage\" />
-<a href=\"menu.php?v=TEAM\">View Your Team</a>
-<p>View your team members and the company / projects</p>
-</div>";
+     echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/team-icon.png\" class=\"cImage\" />
+    <a href=\"menu.php?v=TEAM\">View Your Team</a>
+    <p>View your team members and the company / projects</p>
+    </div>";
 }
 else if ($_SESSION["asset_user_type"] == 0)		// show students project / teamleader info
 {
-	 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/ico_projects.png\" class=\"cImage\" width=\"48\" />
-<a href=\"menu.php?v=USER\">View Your Project</a>
-<p>View your project and the teamleader's information</p>
+    echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/ico_projects.png\" class=\"cImage\" width=\"48\" />
+    <a href=\"menu.php?v=USER\">View Your Project</a>
+    <p>View your project and the teamleader's information</p>
+    </div>";
+    	
+    
+    echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
+    <a href=\"file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
+    <p>Download the Process Simulator software file from here</p>
+    </div>";
+} 
+else if ($_SESSION["asset_user_type"] == 4)		// show board menber info
+{
+ echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/board.png\" class=\"cImage\" />
+<a href=\"menu.php?v=BOARD\">View Board Info</a>
+<p>View your information as a board member of summer lean program</p>
 </div>";
-	
 }
 
 
@@ -72,6 +86,9 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 </div>";
 
 }
+
+
+
 ?>
 
 <?php if ($_SESSION["asset_user_type"] >= 2)	// only teamleader and admin can see list
@@ -80,7 +97,16 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 <a href=\"menu.php?v=LIST\">View List</a>
 <p>View the student list and their choices of projects</p>
 </div>";
+
+
+echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
+<a href=\"file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
+<p>Download the Process Simulator software file from here</p>
+</div>";
+
+
 }
+
 ?>
 
 
@@ -93,14 +119,6 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 }
 ?>
 
-<!--
-<div class="catBox">
-<img src="<?php echo WEB_ROOT; ?>images/bb.png" class="cImage" />
-<a target = "_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">Online Session</a>
-<p>Take your summer lean lectures online! (Begins on 10:00 AM EST)</p>
-
-</div>
--->
 
 
 <div class="catBox">

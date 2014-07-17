@@ -27,6 +27,9 @@ switch ($action) {
 	case 'pwd' :
 		changePassword();
 		break;
+	case 'rename':
+      refullname();
+      break;
 
 	default :
 	    // if action is not defined or unknown
@@ -111,6 +114,32 @@ function changePassword()
 	{
 		header('Location: ../index.php?changed=false');
 	}
+	
+}
+
+function refullname()
+{
+	$oldpass = $_POST["oldpass"];
+	$newname = $_POST["newname"];
+	
+	$sql = "Select email from tbl_students "
+					. " where stuIndex = ". $_SESSION['asset_user_id']
+					. " and password = \"". $oldpass."\"";
+					
+	$result = dbQuery($sql);
+	
+	if (dbNumRows($result) == 1) {
+		
+		 $usql = "UPDATE `tbl_students` SET  fullname = '$newname' "
+    . "WHERE 1 and stuindex = " . $_SESSION['asset_user_id'];
+    dbQuery($usql);
+    header('Location: ../menu.php?v=USER');	
+	}
+	else
+	{
+	   header('Location: ../menu.php?v=USER&error=Failed! Wrong Password!');	
+	}
+
 	
 }
 

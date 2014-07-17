@@ -30,6 +30,10 @@ switch ($view) {
 		$content 	= 'user/team.php';		
 		$pageTitle 	= 'Lean Summer Project - Choose Your Projects';
 		break;
+	case 'BOARD' :
+		$content 	= 'user/board.php';		
+		$pageTitle 	= 'Lean Summer Project - View Your Info';
+		break;
 		
 	case 'PWD' :
 		$content 	= 'user/password.php';		
@@ -38,6 +42,11 @@ switch ($view) {
 
 	case 'HOME' :
 		$content 	= 'index.php';		
+		$pageTitle 	= 'Lean Summer Project - Welcome Home!';
+		break;
+		
+	case 'RENAME' :
+		$content 	= 'user/rename.php';		
 		$pageTitle 	= 'Lean Summer Project - Welcome Home!';
 		break;
 		

@@ -26,17 +26,41 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 
 $amazon = array(
 		0 => "TBD",
+		11 => "Trip 1a, leaves at 7:30 AM, July 21, Driver: Kaveri",
+		12 => "Trip 1b, leaves at 7:30 AM, July 21, Driver: Ali",
+		13 => "Trip 1c, leaves at 7:30 AM, July 21, Driver: Girish",
+		14 => "Trip 1d, leaves at 7:30 AM, July 21, Driver: Dhanush",
+		21 => "Trip 2a, leaves at 7:30 AM, July 28, Driver: Enrique",
+		22 => "Trip 2b, leaves at 7:30 AM, July 28, Driver: Ryan",
+		31 => "Trip 3a, leaves at 10:30 AM, July 28, Driver: Abhishek",
+		32 => "Trip 3b, leaves at 10:30 AM, July 28, Driver: Vahid",
+		33 => "Trip 3c, leaves at 10:30 AM, July 28, Driver: Dinesh",
+		41 => "Trip 4a, leaves at 12:30 AM, July 28, Driver: Bharadwaj",
+		42 => "Trip 4b, leaves at 12:30 AM, July 28, Driver: MohammedAli",
+		43 => "Trip 4c, leaves at 12:30 AM, July 28, Driver: Jason",
 );
 
 $toyota = array(
 		0 => "TBD",
-    1 => "Trip 1, leaves at 7 AM",
-    2 => "Trip 2, leaves at 9 AM",
+    1 => "Trip 1, leaves at 7 AM, July 11",
+    2 => "Trip 2, leaves at 9 AM, July 11",
 );
 
 
 $vw = array(
 		0 => "TBD",
+		11 => "Trip 1a, leaves at 6:30 AM, July 21, Driver: Mostafa",
+		12 => "Trip 1b, leaves at 6:30 AM, July 21, Driver: Enrique",
+		2  => "Trip 2, leaves at 9:00 AM, July 21, Driver: MohammedAli",
+		31 => "Trip 3a, leaves at 11:00 AM, July 21, Driver: Ryan",
+		32 => "Trip 3b, leaves at 11:00 AM, July 21, Driver: Dinesh",
+		41 => "Trip 4a, leaves at 6:30 AM, July 28, Driver: Vahid",
+		42 => "Trip 4b, leaves at 6:30 AM, July 28, Driver: Abhishek",
+		51 => "Trip 5a, leaves at 9:00 AM, July 28, Driver: Ali",
+		52 => "Trip 5b, leaves at 9:00 AM, July 28, Driver: Jason",
+    61 => "Trip 6a, leaves at 11:00 AM, July 28, Driver: Wolday",
+    62 => "Trip 6b, leaves at 11:00 AM, July 28, Driver: Dhanush",
+    63 => "Trip 6c, leaves at 11:00 AM, July 28, Driver: Ninad",
 );
 
 $aquarium = array(
@@ -82,7 +106,7 @@ $neyland = array(
    		if ($s_middle) echo " ".$s_middle; 
    		echo " ".$s_last; 
    		if ($s_last2)  echo " ".$s_last2;
-	  ?>
+	  ?>	    
    	</td>
  </tr>
  
@@ -99,7 +123,7 @@ $neyland = array(
 
 <tr>
  	<td><?php echo "Name on Certificate:";?></td>
- 	<td align="center"><?php echo $s_full; ?></td>
+ 	<td align="center"><?php echo $s_full."  "; ?><u><a href="menu.php?v=RENAME">Modify</a></u></td>
  	</tr>
  	
  	<tr>

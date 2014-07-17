@@ -57,6 +57,21 @@ function checkPassword()
 	}
 }
 
+function changefullname()
+{
+	with (window.document.frmAddUser) {
+
+	  if (isEmpty(oldpass, 'Enter Password!')) {
+	    return;
+	  } else if (isEmpty(newname, 'Name cannot be empty!')) {
+	    return
+	  } else {
+			submit();
+		}
+		
+	}
+}
+
 function addUser()
 {
 	window.location.href = 'view.php?v=adduser';
