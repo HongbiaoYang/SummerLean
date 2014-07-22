@@ -65,7 +65,7 @@ else if ($_SESSION["asset_user_type"] == 0)		// show students project / teamlead
     	
     
     echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
-    <a href=\"file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
+    <a href=\"../file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
     <p>Download the Process Simulator software file from here</p>
     </div>";
 } 
@@ -100,7 +100,7 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 
 
 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
-<a href=\"file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
+<a href=\"../file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
 <p>Download the Process Simulator software file from here</p>
 </div>";
 

@@ -14,7 +14,7 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
 				." s.FirstName as s_first, s.netid, s.tnid, s.LastName as s_last, s.LastName2 as s_last2, "
 				." s.MiddleName as s_middle, s.fullName as s_full, r.trip_amazon, r.trip_toyota, r.trip_vw, "
-				." r.trip_aqua, r.trip_neyland, n.name as country, "
+				." r.trip_aqua, r.trip_neyland, r.present, r.sim1, r.sim2, r.sit, n.name as country, "
 				." p.title as title, c.CompanyName as company "
 		    ." FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` ,  "
 		    ." tbl_trips r, `tbl_companies` `c`, `tbl_countries` `n` "
@@ -42,8 +42,8 @@ $amazon = array(
 
 $toyota = array(
 		0 => "TBD",
-    1 => "Trip 1, leaves at 7 AM, July 11",
-    2 => "Trip 2, leaves at 9 AM, July 11",
+    1 => "Trip 1, leaves at 7:00 AM, July 11",
+    2 => "Trip 2, leaves at 9:00 AM, July 11",
 );
 
 
@@ -69,8 +69,20 @@ $aquarium = array(
 
 $neyland = array(
 		0 => "TBD",
+		1 => "Trip 1, 12:30 PM ~ 1:45 PM, July 24, Gate 21",
+		2 => "Trip 2, 1:45 PM ~ 3:00 PM, July 24, Gate 21",
+		3 => "Trip 3, 3:00 PM ~ 4:15 PM, July 24, Gate 21",
 );
 
+
+$schedule_time = array(    
+		1 => "8:00 AM, July 18, Friday",
+		2 => "9:30 AM, July 18, Friday",
+		3 => "11:00 AM, July 18, Friday",
+		4 => "8:00 AM, July 22, Tuesday",
+		5 => "9:30 AM, July 22, Tuesday",
+		6 => "11:00 AM, July 22, Tuesday"
+);
 
 
 ?> 
@@ -149,6 +161,10 @@ $neyland = array(
 	 	<tr> <td colspan=2><hr></td></tr>
 	 	
 	 	
+	 	 	<tr> <td colspan=2><strong ><font size="3" color="orange">
+ 	    Your shecule for company visits and trips
+ 	    </font></strong></td></tr>
+	 	
 	<td>Trip Toyota:</td>
  	 	<td align="center"><?php 
  	 		echo $toyota[$trip_toyota];
@@ -167,18 +183,53 @@ $neyland = array(
  	 		?></td>
  	</tr>
  	
+	<td>Trip Neyland Stadium:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $neyland[$trip_neyland];
+ 	 		?></td>
+ 	</tr>
+
 	<td>Trip Aquarium:</td>
  	 	<td align="center"><?php 
  	 		echo $aquarium[$trip_aqua];
  	 		?></td>
  	</tr>
  	
-	<td>Trip Neyland Stadium:</td>
+
+ 	<tr> <td colspan=2><hr></td></tr>
+ 	
+ 	<tr> <td colspan=2><strong ><font size="3" color="orange">
+ 	    Your schedules for middle-term presentation and simulation class
+ 	    </font></strong></td></tr>
+ 	    
+ 	<tr>
+ 	<td>Your Presentation:</td>
  	 	<td align="center"><?php 
- 	 		echo $neyland[$trip_neyland];
+ 	 		echo $schedule_time[$present]." in Tickle 405";
  	 		?></td>
  	</tr>
  	
+ 	 	<tr>
+ 	<td>Watch Others' Presentation:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $schedule_time[$sit]." in Tickle 405";
+ 	 		?></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>1st Simulation Class:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $schedule_time[$sim1]." in Tickle 402";
+ 	 		?></td>
+ 	</tr>
+ 	
+ 	<tr>
+ 	<td>2nd Simulation Class:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $schedule_time[$sim2]." in Tickle 402";
+ 	 		?></td>
+ 	</tr>
+	
 	
 	<tr> <td colspan=2><hr></td></tr>
  	<tr> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
