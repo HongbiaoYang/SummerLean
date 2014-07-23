@@ -14,7 +14,7 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
 				." s.FirstName as s_first, s.netid, s.tnid, s.LastName as s_last, s.LastName2 as s_last2, "
 				." s.MiddleName as s_middle, s.fullName as s_full, r.trip_amazon, r.trip_toyota, r.trip_vw, "
-				." r.trip_aqua, r.trip_neyland, r.present, r.sim1, r.sim2, r.sit, n.name as country, "
+				." r.trip_aqua, r.trip_neyland, r.present, r.sim1, r.sim2, r.sit, r.simqa, n.name as country, "
 				." p.title as title, c.CompanyName as company "
 		    ." FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` ,  "
 		    ." tbl_trips r, `tbl_companies` `c`, `tbl_countries` `n` "
@@ -64,7 +64,8 @@ $vw = array(
 );
 
 $aquarium = array(
-		0 => "TBD",
+		0 => "Not Going",
+		1 => "Leaving at 8:30 AM on Saturday, JULY 26",
 );
 
 $neyland = array(
@@ -76,6 +77,7 @@ $neyland = array(
 
 
 $schedule_time = array(    
+    0 => "TBD",
 		1 => "8:00 AM, July 18, Friday",
 		2 => "9:30 AM, July 18, Friday",
 		3 => "11:00 AM, July 18, Friday",
@@ -83,6 +85,13 @@ $schedule_time = array(
 		5 => "9:30 AM, July 22, Tuesday",
 		6 => "11:00 AM, July 22, Tuesday"
 );
+
+$schedule_simqa =  array(    
+    0 => "TBD",
+		1 => "1:20 PM ~ 2:50 PM, July 24, Thursday",
+		2 => "3:00 PM ~ 4:30 PM, July 24, Thursday",
+		3 => "4:30 PM ~ 6:00 PM, July 24, Thursday",
+); 
 
 
 ?> 
@@ -229,7 +238,12 @@ $schedule_time = array(
  	 		echo $schedule_time[$sim2]." in Tickle 402";
  	 		?></td>
  	</tr>
-	
+		<tr>
+ 	<td>Simulation Q&A:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo $schedule_simqa[$simqa]." in Tickle 402";
+ 	 		?></td>
+ 	</tr>
 	
 	<tr> <td colspan=2><hr></td></tr>
  	<tr> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
