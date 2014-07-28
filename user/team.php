@@ -166,7 +166,7 @@ $neyland = array(
     <?php
  		$sql_stu =  "SELECT s.Email as s_email, s.fullName, c.name as country, s.Semester, s.EnglishWrite, "
     . " s.EnglishListen, s.EnglishSpeak, s.Gender, s.University, s.Major, s.GPA, "
-    .	" s.netid, s.tnid  "
+    .	" s.netid, s.tnid, s.verify  "
     . " FROM tbl_students s, tbl_countries c"
     . " WHERE 1 and s.nationality = c.code and s.rank = 0 and Team = ".$pid;
 		
@@ -182,6 +182,7 @@ $neyland = array(
 			<td>TNID</td>
 	 		<td>Country</td>
 	 		<td>Gender</td>
+	 		<td>Name Verify</td>
 
 	 		</tr>
 	<?php
@@ -197,6 +198,8 @@ $neyland = array(
 		  <td><?php echo $tnid; ?></td>
 		  <td><?php echo $country; ?></td>
 		  <td><?php echo $Gender; ?></td>
+		  <td><?php if ($verify == 0) {echo "<font color=\"red\"> Not Yet</font>";}
+		            else {echo "<font color=\"green\"> Verified</font>";} ?></td>
 
 		  
 		</tr>

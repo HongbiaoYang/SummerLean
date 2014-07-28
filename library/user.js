@@ -57,6 +57,84 @@ function checkPassword()
 	}
 }
 
+function showPic(e,sUrl){ 
+    var x,y; 
+    x = e.clientX; 
+    y = e.clientY; 
+    document.getElementById("Layer1").style.left = x+2+'px'; 
+    document.getElementById("Layer1").style.top = y+2+'px'; 
+    document.getElementById("Layer1").innerHTML = "<img border='0' src=\"" + sUrl + "\">"; 
+    document.getElementById("Layer1").style.display = ""; 
+} 
+
+function hiddenPic(){ 
+    document.getElementById("Layer1").innerHTML = ""; 
+    document.getElementById("Layer1").style.display = "none"; 
+} 
+
+function changeColor(newColor) {
+    var elem = document.getElementById("para1");
+    elem.style.color = newColor;
+}
+
+function verifyName()
+{
+  
+   var r = confirm("Are you absolutely SURE your Name on Certificate is correct?");
+    if (r == true) {
+        alert('You have just authorized your Name on Certificate!');
+        return true;
+    } else {
+        alert('You can still modify your name and verify again!');
+        return false;
+    } 
+}
+
+function toggle(thisname) {
+ tr=document.getElementsByTagName('tr')
+ for (i=0;i<tr.length;i++){
+  if (tr[i].getAttribute(thisname)){
+   if ( tr[i].style.display=='none' ){
+     tr[i].style.display = '';
+   }
+   else {
+    tr[i].style.display = 'none';
+   }
+  }
+ } 
+ 
+ if (thisname == 'nameit')
+ {
+    span=document.getElementById('hid1');
+ }
+ else if (thisname == 'nameit2')
+ {
+    span=document.getElementById('hid2');
+ }
+ else if (thisname == 'nameit3')
+ {
+    span=document.getElementById('hid3');
+ }
+ else if (thisname == 'nameit4')
+ {
+    span=document.getElementById('hid4');
+ }
+
+ if (span.getAttribute("hide") == 0)
+ {
+    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Hide</u></font></span>";
+    span.setAttribute("hide", 1);
+ }
+ else 
+ {
+    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Show</u></font></span>";
+    span.setAttribute("hide", 0);
+ }   
+    
+ 
+} 
+
+
 function changefullname()
 {
 	with (window.document.frmAddUser) {
@@ -64,7 +142,7 @@ function changefullname()
 	  if (isEmpty(oldpass, 'Enter Password!')) {
 	    return;
 	  } else if (isEmpty(newname, 'Name cannot be empty!')) {
-	    return
+	    return;
 	  } else {
 			submit();
 		}

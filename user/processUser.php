@@ -16,6 +16,10 @@ switch ($action) {
 		modifyUser();
 		break;
 		
+	case 'verify' :
+	    verifyUser();
+	    break;	    
+		
 	case 'delete' :
 		deleteUser();
 		break;
@@ -192,6 +196,17 @@ function modifyUser()
 /*
 	Remove a user
 */
+
+function verifyUser()
+{
+    $vsql = "update tbl_students set verify = 1 where stuindex = ".$_SESSION['asset_user_id'];
+    dbQuery($vsql);
+    //echo "debug".$_SESSION['asset_user_id'];
+    //header('Location: ../menu.php?v=USER');	
+    header('Location: ../menu.php?v=USER');
+}
+
+
 function deleteUser()
 {
 	if (isset($_GET['userId']) && (int)$_GET['userId'] > 0) {
