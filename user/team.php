@@ -61,6 +61,33 @@ $vw = array(
     63 => "Trip 6c, leaves at 11:00 AM, July 28, Driver: Ninad",
 );
 
+$schedule_final = array(
+    0 => "TBD",
+		6 => "3:00 PM, July 30, Wednesday",
+		16 => "3:25 PM, July 30, Wednesday",
+		11 => "3:50 PM, July 30, Wednesday",
+		23 => "4:15 PM, July 30, Wednesday",
+		9 => "4:40 PM, July 30, Wednesday",
+		21 => "5:05 PM, July 30, Wednesday",
+		1 => "8:00 AM, July 31, Thursday",
+		13 => "8:25 AM, July 31, Thursday",
+		2 => "8:50 AM, July 31, Thursday",
+	 14 => "9:15 AM, July 31, Thursday",
+	 3 => "9:40 AM, July 31, Thursday",
+	 15 => "10:05 AM, July 31, Thursday",
+	 4 => "10:30 AM, July 31, Thursday",
+	 16 => "10:55 AM, July 31, Thursday",
+	 7 => "11:20 AM, July 31, Thursday",
+	 19 => "11:45 AM, July 31, Thursday",
+	 5 => "2:05 PM, July 31, Thursday",
+	 8 => "2:30 PM, July 31, Thursday",
+	 20 => "2:55 PM, July 31, Thursday",
+	 10 => "3:20 PM, July 31, Thursday",
+	 22 => "3:45 PM, July 31, Thursday",
+	 12 => "4:10 PM, July 31, Thursday",
+	 24 => "4:35 PM, July 31, Thursday",
+);
+
 
 $aquarium = array(
 		0 => "TBD",
@@ -211,8 +238,17 @@ $neyland = array(
  		}
    ?>
   	</table> 
-  
+    <div><font size="3" color="orange">
+    <strong>Final Presentation Schedule:  
+    
  <?php   
+    echo $schedule_final[$pid]."@Tickle 500<br>";//</strong></font></div> <br>";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo $schedule_final[0]."@$company</strong></font></div> <br>";
 	}
  ?>
 

@@ -15,8 +15,8 @@ $sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
 				." s.FirstName as s_first, s.netid, s.tnid, s.LastName as s_last, s.LastName2 as s_last2, s.verify, "
 				." s.MiddleName as s_middle, s.fullName as s_full, r.trip_amazon, r.trip_toyota, r.trip_vw, "
-				." r.trip_aqua, r.trip_neyland, r.present, r.sim1, r.sim2, r.sit, r.simqa, n.name as country, "
-				." p.title as title, c.CompanyName as company "
+				." r.trip_aqua, r.trip_neyland, r.present, r.sim1, r.sim2, r.sit, r.simqa, r.final_campus, r.final_company , "
+				."  n.name as country, p.title as title, c.CompanyName as company "
 		    ." FROM `tbl_teamleaders` `t` , `tbl_students` `s` , `tbl_projects` `p` ,  "
 		    ." tbl_trips r, `tbl_companies` `c`, `tbl_countries` `n` "
 		    ."WHERE 1\n"
@@ -94,6 +94,33 @@ $schedule_simqa =  array(
 		3 => "4:30 PM ~ 6:00 PM, July 24, Thursday",
 ); 
 
+$schedule_final_campus = array(
+    0 => "TBD",
+		6 => "3:00 PM, July 30, Wednesday",
+		16 => "3:25 PM, July 30, Wednesday",
+		11 => "3:50 PM, July 30, Wednesday",
+		23 => "4:15 PM, July 30, Wednesday",
+		9 => "4:40 PM, July 30, Wednesday",
+		21 => "5:05 PM, July 30, Wednesday",
+		1 => "8:00 AM, July 31, Thursday",
+		13 => "8:25 AM, July 31, Thursday",
+		2 => "8:50 AM, July 31, Thursday",
+	 14 => "9:15 AM, July 31, Thursday",
+	 3 => "9:40 AM, July 31, Thursday",
+	 15 => "10:05 AM, July 31, Thursday",
+	 4 => "10:30 AM, July 31, Thursday",
+	 16 => "10:55 AM, July 31, Thursday",
+	 7 => "11:20 AM, July 31, Thursday",
+	 19 => "11:45 AM, July 31, Thursday",
+	 5 => "2:05 PM, July 31, Thursday",
+	 8 => "2:30 PM, July 31, Thursday",
+	 20 => "2:55 PM, July 31, Thursday",
+	 10 => "3:20 PM, July 31, Thursday",
+	 22 => "3:45 PM, July 31, Thursday",
+	 12 => "4:10 PM, July 31, Thursday",
+	 24 => "4:35 PM, July 31, Thursday",
+);
+
 
 ?> 
 <div class="prepend-1 span-17">
@@ -149,8 +176,8 @@ $schedule_simqa =  array(
  	    if ($verify == 0)
  	    {
  	        echo  "<form action=\"".WEB_ROOT."user/processUser.php?action=verify\" method=\"post\"  name=\"frmAddUser\" id=\"frmAddUser\" onsubmit=\"return verifyName();\">";
- 	        // echo "<a href=javascript:verifyName()> <u>Verify</u></a>"; 	            
- 	        echo "<input name=\"btnAddUser\" type=\"submit\"  id=\"btnAddUser\" value=\"Verify\" >";
+ 	        // echo "<a href=javascript:verifyName()> <u>Authorize</u></a>"; 	            
+ 	        echo "<input name=\"btnAddUser\" type=\"submit\"  id=\"btnAddUser\" value=\"Authorize\" >";
  	        echo  " <u><a href=\"menu.php?v=RENAME\">Modify</a></u>";
  	        echo "</form>";
  	        
@@ -159,7 +186,7 @@ $schedule_simqa =  array(
  	    }
  	    else
  	    {
- 	        echo "<u><strong><font color =\"green\"> Verified</font></strong></u></td>";
+ 	        echo "<u><strong><font color =\"green\"> Authorized</font></strong></u></td>";
  	    }
  	    ?>
  	</tr>
@@ -186,29 +213,43 @@ $schedule_simqa =  array(
  	</tr>
 	 	
 	 	<tr> <td colspan=2><hr></td></tr>
-	 	
-	 	
-	 	 	<tr> <td colspan=2><strong ><font size="3" color="orange">
- 	    Your schedules for company visits and trips </font></strong>
- 	    <span groupid="1" id="hid1" onClick="toggle('nameit');"> 
+	<tr> <td colspan=2><strong ><font size="3" color="lightgray">
+ 	    Online session information
+ 	    </font></strong>
+ 	    <span groupshow="1"  id="hid4" onClick="toggle('nameit4');" > 
  	        <font size="3" color="blue"><u>Hide</u></font></span><br/><br/> 
  	    </td></tr>
  	    
-  <tr  groupit="1" nameit="fred" id="hidethis">
+	
+ 	<tr group-s="4"  nameit4="fred" id="hidethis"> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
+ 	<tr group-s="4" nameit4="fred" id="hidethis"> <td>System Requirements</td><td>Click <a target="_blank" href="https://oit.utk.edu/instructional/tools/liveonline/Pages/Collaborate-Requirements.aspx">HERE</a> to see if your computer meets the system requirements</td></tr>
+ 	
+	 	
+	 	<tr> <td colspan=2><hr></td></tr>
+	 	
+	 	
+	 	
+	 	 	<tr> <td colspan=2><strong ><font size="3" color="lightgray">
+ 	    Your schedules for company visits and trips </font></strong>
+ 	    <span groupshow="1" id="hid1" onClick="toggle('nameit');"> 
+ 	        <font size="3" color="blue"><u>Hide</u></font></span><br/><br/> 
+ 	    </td></tr>
+ 	    
+  <tr  group-s="1" nameit="fred" id="hidethis">
 	<td>Trip Toyota:</td>
  	 	<td align="center"><?php 
  	 		echo $toyota[$trip_toyota];
  	 		?></td>
  	</tr>
  		
-  <tr groupit="1" nameit="fred" id="hidethis">
+  <tr group-s="1" nameit="fred" id="hidethis">
 	<td>Trip Amazon:</td>
  	 	<td align="center"><?php 
  	 		echo $amazon[$trip_amazon];
  	 		?></td>
  	</tr>
  	
- 	<tr groupit="1" nameit="fred" id="hidethis">
+ 	<tr group-s="1" nameit="fred" id="hidethis">
 	<td>Trip Volkswagen:</td>
  	 	<td align="center"><?php 
  	 		echo $vw[$trip_vw];
@@ -218,7 +259,7 @@ $schedule_simqa =  array(
  	<div id="Layer1" style="display: none; position: absolute; z-index: 100;">
     </div>
     
-  <tr groupit="1" nameit="fred" id="hidethis">
+  <tr group-s="1" nameit="fred" id="hidethis">
 	<td>Trip  <a href="" onmouseout="hiddenPic();" onmousemove="showPic(event,'images/neyland-gate.jpg');">
             Neyland Stadium</a>:</td>
  	 	<td align="center"><?php 
@@ -230,7 +271,7 @@ $schedule_simqa =  array(
 </td>
  	</tr>
  	
-	<tr groupit="1" nameit="fred" id="hidethis">
+	<tr group-s="1" nameit="fred" id="hidethis">
 	<td>Trip Aquarium:</td>
  	 	<td align="center"><?php 
  	 		echo $aquarium[$trip_aqua];
@@ -240,41 +281,41 @@ $schedule_simqa =  array(
 
  	<tr> <td colspan=2><hr></td></tr>
  	
- 	<tr> <td colspan=2><strong ><font size="3" color="orange">
+ 	<tr> <td colspan=2><strong ><font size="3" color="lightgray">
  	    Your schedules for middle-term presentation and simulation class
  	    </font></strong>
- 	    <span groupid="1" id="hid2" onClick="toggle('nameit2');" > 
+ 	    <span groupshow="1" id="hid2" onClick="toggle('nameit2');" > 
  	        <font size=groupid="1" "3" color="blue"><u>Hide</u></font></span><br/><br/> 
  	    </td></tr>
  	    
- 		<tr groupit="2" nameit2="fred" id="hidethis" >
+ 		<tr group-s="2" nameit2="fred" id="hidethis" >
  	<td>Your Presentation:</td>
  	 	<td align="center"><?php 
  	 		echo $schedule_time[$present]." in Tickle 405";
  	 		?></td>
  	</tr>
  	
- 	 		<tr groupit="2" nameit2="fred" id="hidethis" >
+ 	 		<tr group-s="2" nameit2="fred" id="hidethis" >
  	<td>Watch Others' Presentation:</td>
  	 	<td align="center"><?php 
  	 		echo $schedule_time[$sit]." in Tickle 405";
  	 		?></td>
  	</tr>
  	
- 		<tr groupit="2" nameit2="fred" id="hidethis" >
+ 		<tr group-s="2" nameit2="fred" id="hidethis" >
  	<td>1st Simulation Class:</td>
  	 	<td align="center"><?php 
  	 		echo $schedule_time[$sim1]." in Tickle 402";
  	 		?></td>
  	</tr>
  	
- 		<tr groupit="2" nameit2="fred" id="hidethis" >
+ 		<tr group-s="2" nameit2="fred" id="hidethis" >
  	<td>2nd Simulation Class:</td>
  	 	<td align="center"><?php 
  	 		echo $schedule_time[$sim2]." in Tickle 402";
  	 		?></td>
  	</tr>
-			<tr groupit="2"  nameit2="fred" id="hidethis">
+			<tr group-s="2"  nameit2="fred" id="hidethis">
  	<td>Simulation Q&A Class:</td>
  	 	<td align="center"><?php 
  	 		echo $schedule_simqa[$simqa]." in SERF 307";
@@ -283,31 +324,26 @@ $schedule_simqa =  array(
  	
  	<tr> <td colspan=2><hr></td></tr>
  	<tr> <td colspan=2><strong ><font size="3" color="orange">
- 	    Your schedules for final presentation at Campus:
+ 	    Your schedules for final presentations:
  	    </font></strong>
- 	    <span groupid="1" id="hid3" onClick="toggle('nameit3');" > 
+ 	    <span grouphide="1" hide="0" id="hid3" onClick="toggle('nameit3');" > 
  	        <font size="3" color="blue"><u>Hide</u></font></span><br/><br/> 
  	    </td></tr>
  	    
- 		<tr groupit="3" nameit3="fred" id="hidethis" >
- 	<td>Final Presentation:</td>
+ 		<tr group-h="3" nameit3="fred" id="hidethis" >
+ 	<td>Final Presentation at Campus:</td>
  	 	<td align="center"><?php 
- 	 		echo "Pending";
+ 	 		echo $schedule_final_campus[$final_campus]. " @Tickle 500";
+ 	 		?></td>
+ 	</tr>
+ 	<tr group-h="3" nameit3="fred" id="hidethis" >
+ 	<td>Final Presentation at Company:</td>
+ 	 	<td align="center"><?php 
+ 	 		echo "<font color=\"orange\">".$schedule_final_campus[0]. "</font> @".$company;
  	 		?></td>
  	</tr>
 	
 	<tr> <td colspan=2><hr></td></tr>
-	<tr> <td colspan=2><strong ><font size="3" color="orange">
- 	    Online session information
- 	    </font></strong>
- 	    <span groupid="1"  id="hid4" onClick="toggle('nameit4');" > 
- 	        <font size="3" color="blue"><u>Hide</u></font></span><br/><br/> 
- 	    </td></tr>
- 	    
-	
- 	<tr groupit="3"  nameit4="fred" id="hidethis"> <td>Online Session:</td><td><a target="_blank" href="https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294">https://bblearn.utk.edu/webapps/bb-collaborate-BBLEARN/launchSession/guest?uid=503f664d-5543-447d-9035-420d4bb01294</a></td></tr>
- 	<tr groupit="3" nameit4="fred" id="hidethis"> <td>System Requirements</td><td>Click <a target="_blank" href="https://oit.utk.edu/instructional/tools/liveonline/Pages/Collaborate-Requirements.aspx">HERE</a> to see if your computer meets the system requirements</td></tr>
- 	<tr> <td colspan=2><hr></td></tr>
  	
  	<tr>
 	<td><?php echo "Team Leader:";?></td>
@@ -346,20 +382,22 @@ $schedule_simqa =  array(
 </div>
 
 <script>
-   
+ // initialize the section hidden. Set the default switch status / text
  spans = document.getElementsByTagName('span');
  for (i=0;i<spans.length;i++) {
-    if (spans[i].getAttribute('groupid')) {
+    if (spans[i].getAttribute('groupshow')) {
         spans[i].innerHTML = "<font size=\"3\" color=\"blue\"><u>Show</u></font></span>";
+    } else if (spans[i].getAttribute('grouphide')) {
+        spans[i].innerHTML = "<font size=\"3\" color=\"blue\"><u>Hide</u></font></span>";
     }
  }
-
-
  
  tr=document.getElementsByTagName('tr')
  for (i=0;i<tr.length;i++){
-  if (tr[i].getAttribute('groupit')){
+  if (tr[i].getAttribute('group-s')){
     tr[i].style.display = 'none';
+  } else if (tr[i].getAttribute('group-s')) {
+    tr[i].style.display = '';
   }
  }
  

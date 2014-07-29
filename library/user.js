@@ -122,12 +122,12 @@ function toggle(thisname) {
 
  if (span.getAttribute("hide") == 0)
  {
-    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Hide</u></font></span>";
+    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Show</u></font></span>";
     span.setAttribute("hide", 1);
  }
  else 
  {
-    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Show</u></font></span>";
+    span.innerHTML = "<font size=\"3\" color=\"blue\"><u>Hide</u></font></span>";
     span.setAttribute("hide", 0);
  }   
     

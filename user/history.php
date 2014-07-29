@@ -38,9 +38,11 @@ else
 
 
 
-$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.fullname as fname, s.email as s_email, s.netid, s.tnid, "
-			  . " p.title, c.companyname, n.name as countryname, t.firstname as t_first, "
-			  . " t.lastname as t_last FROM tbl_students s, tbl_projects p, tbl_countries n, " 
+$sql = "SELECT s.firstname as s_first, s.lastname as s_last, s.fullname as fname, "
+        . " s.email as s_email, s.netid, s.tnid, s.university, "
+			  . " p.projindex as pid, p.title, c.companyname, n.name as countryname, t.firstname as t_first, "
+			  . " t.lastname as t_last "
+			  . " FROM tbl_students s, tbl_projects p, tbl_countries n, " 
 			  . " tbl_companies c, tbl_teamleaders t  "
 			  . " WHERE 1 And s.team = p.projIndex and p.ComIndex = c.ComIndex and  "
 			  . " c.teamleader = t.leaderindex and n.code = s.nationality and s.rank = 0 ".$condition;
@@ -118,7 +120,7 @@ You can view the list of student information by different category.
 <?php
 
 
-$nsql = $sql. " order by title asc limit ".$limit.",".$perpage;
+$nsql = $sql. " order by t.porder, pid ";
 		
 $result = dbQuery($nsql);
 
@@ -126,6 +128,7 @@ $result = dbQuery($nsql);
 
  <table  border="0" align="left" cellpadding="2" cellspacing="1" class="text">
   <tr align="center" id="listTableHeader"> 
+   <!--
    <td>Name</td>
    <td>NetID</td>
    <td>TN ID</td>
@@ -134,7 +137,11 @@ $result = dbQuery($nsql);
    <td>Company</td>
    <td>Country</td>
    <td>Teamleader</td>
-   
+   -->
+   <td>Teamleader</td>
+   <td>ProjectIndex</td>
+   <td>Name</td>
+   <td>University</td>
    
   </tr>
 <?php
@@ -150,6 +157,12 @@ while($row = dbFetchAssoc($result)) {
 	$i += 1;
 ?>
    <tr class="<?php echo $class; ?>"> 
+  
+   <td align="center"><?php echo $t_first." ".$t_last; ?></td>
+   <td align="center"><?php echo $pid; ?></td>
+   <td align="center"><?php echo $fname; ?></td>
+   <td align="center"><?php echo $university; ?></td>
+    <!--
    <td align="center"><?php echo $fname; ?></td>
    <td align="center"><?php echo $netid; ?></td>
    <td align="center"><?php echo $tnid; ?></td>
@@ -158,6 +171,8 @@ while($row = dbFetchAssoc($result)) {
    <td align="center"><?php echo $companyname; ?></td>
    <td align="center"><?php echo $countryname; ?></td>
    <td align="center"><?php echo $t_first." ".$t_last; ?></td>
+   -->
+   
   </tr>
   <?php 
   } // end of while
