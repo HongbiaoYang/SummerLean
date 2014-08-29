@@ -11,7 +11,7 @@ $sql0 = "SELECT u.uid, u.uname, u.email, u.fname, u.lname
 	WHERE u.uid = ".$_SESSION['asset_user_id'].
 	" ORDER BY uname;";
 
-$sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, "
+$sql =	"SELECT `t`.`FirstName` as t_first , `t`.`LastName` as t_last, t.leaderindex, "
 				."`t`.`Email` as t_email, `t`.`Biography` as bio, `Pic`, s.StuIndex, s.Email as s_email, "
 				." s.FirstName as s_first, s.netid, s.tnid, s.LastName as s_last, s.LastName2 as s_last2, s.verify, "
 				." s.MiddleName as s_middle, s.fullName as s_full, r.trip_amazon, r.trip_toyota, r.trip_vw, "
@@ -97,7 +97,7 @@ $schedule_simqa =  array(
 $schedule_final_campus = array(
     0 => "TBD",
 		6 => "3:00 PM, July 30, Wednesday",
-		16 => "3:25 PM, July 30, Wednesday",
+		18 => "3:25 PM, July 30, Wednesday",
 		11 => "3:50 PM, July 30, Wednesday",
 		23 => "4:15 PM, July 30, Wednesday",
 		9 => "4:40 PM, July 30, Wednesday",
@@ -119,6 +119,22 @@ $schedule_final_campus = array(
 	 22 => "3:45 PM, July 31, Thursday",
 	 12 => "4:10 PM, July 31, Thursday",
 	 24 => "4:35 PM, July 31, Thursday",
+);
+
+
+$schedule_final_company = array (
+    11 => "10:30 AM - 11:30 AM, July 31, Thursday",
+    3	 => "11:00 AM - 12:00 NOON, July 31, Thursday",
+    12 => "8:00 AM - 9:00 AM, August 1, Friday",
+    10 => "9:00 AM - 10:00 AM, August 1, Friday",
+    7	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    6	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    9	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    8	 => "10:00 AM - 11:00 AM, August 1, Friday",
+    1	 => "10:00 AM - 11:00 AM, August 1, Friday",
+    2	 => "10:00 AM - 11:30 AM, August 1, Friday",
+    5	 => "10:40 AM - 11:40 AM, August 1, Friday",
+    4	 => "10:00 AM - 11:00 NOON, August 1, Friday",
 );
 
 
@@ -339,7 +355,7 @@ $schedule_final_campus = array(
  	<tr group-h="3" nameit3="fred" id="hidethis" >
  	<td>Final Presentation at Company:</td>
  	 	<td align="center"><?php 
- 	 		echo "<font color=\"orange\">".$schedule_final_campus[0]. "</font> @".$company;
+ 	 		echo "<font >".$schedule_final_company[$leaderindex]. "</font> @".$company;
  	 		?></td>
  	</tr>
 	

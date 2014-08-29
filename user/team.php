@@ -13,7 +13,7 @@ $sql_leader = "SELECT t.firstname as t_first, t.lastname as t_last, "
     . $_SESSION['asset_user_id'];
 
 $sql_project = " SELECT p.ProjIndex as pid, p.title as title, c.companyname as company, "
-		. " t.firstname as t_first, t.lastname as t_last, t.email as t_email "
+		. " t.firstname as t_first, t.lastname as t_last, t.email as t_email, t.leaderindex "
 		. " FROM tbl_projects p, tbl_companies c, tbl_students s, tbl_teamleaders t"
 		. " WHERE 1 And t.leaderindex = s.team and p.ComIndex = c.ComIndex and "
 		. " c.teamleader = t.leaderindex and s.stuIndex = "
@@ -64,7 +64,7 @@ $vw = array(
 $schedule_final = array(
     0 => "TBD",
 		6 => "3:00 PM, July 30, Wednesday",
-		16 => "3:25 PM, July 30, Wednesday",
+		18 => "3:25 PM, July 30, Wednesday",
 		11 => "3:50 PM, July 30, Wednesday",
 		23 => "4:15 PM, July 30, Wednesday",
 		9 => "4:40 PM, July 30, Wednesday",
@@ -86,6 +86,21 @@ $schedule_final = array(
 	 22 => "3:45 PM, July 31, Thursday",
 	 12 => "4:10 PM, July 31, Thursday",
 	 24 => "4:35 PM, July 31, Thursday",
+);
+
+$schedule_final_company = array (
+    11 => "10:30 AM - 11:30 AM, July 31, Thursday",
+    3	 => "11:00 AM - 12:00 NOON, July 31, Thursday",
+    12 => "8:00 AM - 9:00 AM, August 1, Friday",
+    10 => "9:00 AM - 10:00 AM, August 1, Friday",
+    7	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    6	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    9	 => "9:00 AM - 10:00 AM, August 1, Friday",
+    8	 => "10:00 AM - 11:00 AM, August 1, Friday",
+    1	 => "10:00 AM - 11:00 AM, August 1, Friday",
+    2	 => "10:00 AM - 11:30 AM, August 1, Friday",
+    5	 => "10:40 AM - 11:40 AM, August 1, Friday",
+    4	 => "10:00 AM - 11:00 NOON, August 1, Friday",
 );
 
 
@@ -238,17 +253,18 @@ $neyland = array(
  		}
    ?>
   	</table> 
-    <div><font size="3" color="orange">
-    <strong>Final Presentation Schedule:  
+    <div><strong><font size="3" color="orange">
+    Final Presentation Schedule:  <br></font>
     
  <?php   
+     echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
     echo $schedule_final[$pid]."@Tickle 500<br>";//</strong></font></div> <br>";
     echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
-    echo $schedule_final[0]."@$company</strong></font></div> <br>";
+//    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+//    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+//    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+//    echo "&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;";
+    echo $schedule_final_company[$leaderindex]."@$company</strong></div> <br>";
 	}
  ?>
 

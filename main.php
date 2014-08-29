@@ -64,10 +64,30 @@ else if ($_SESSION["asset_user_type"] == 0)		// show students project / teamlead
     </div>";
     	
     
+    /*
     echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
     <a href=\"../file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
     <p>Download the Process Simulator software file from here</p>
     </div>";
+    */
+    
+    $sql = 'select surveyed, final_grade from tbl_students where stuindex = ' . $_SESSION["asset_user_id"];
+    $result = dbQuery($sql);
+		$row = dbFetchAssoc($result);
+		extract($row);
+    
+    if ($surveyed == 0) {
+        $showGrade = "N/A";
+    } else {
+        $showGrade = $final_grade;
+    }
+    
+    echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/grade.png\" class=\"cImage\" width=\"96\" />
+    <strong>Your Final Grade:<br/><br/></strong>
+    <p>  &nbsp;&nbsp;<font color=\"red\" size=6>$showGrade</font> </p>
+    </div>";
+    
+    
 } 
 else if ($_SESSION["asset_user_type"] == 4)		// show board menber info
 {
@@ -98,12 +118,12 @@ if ($_SESSION["asset_user_type"] == 3 || $_SESSION["asset_user_type"] == 0)  // 
 <p>View the student list and their choices of projects</p>
 </div>";
 
-
+/*
 echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" class=\"cImage\" />
 <a href=\"../file/Process Simulator 2014 (9.1.0.2080) CD ROM Setup.exe\">Process Simulator</a>
 <p>Download the Process Simulator software file from here</p>
 </div>";
-
+*/
 
 }
 
