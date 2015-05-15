@@ -26,7 +26,7 @@ $result = dbQuery($sql);
 	<p class="errorMessage"><?php echo $errorMessage; ?></p>
 <strong>This page shows the projects selection information</strong>
 <br/>
-<?//php echo " test".$_SESSION['asset_user_id']."test "
+<?//php echo " test".$_SESSION['asset_user_id']."test"
 ?>
 <?//php echo " test".$sql."test "
 ?>

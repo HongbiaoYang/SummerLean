@@ -25,7 +25,7 @@ switch ($view) {
 
 	default :
 		$content 	= 'list.php';		
-		$pageTitle 	= 'Shop Admin Control Panel - View Users';
+		$pageTitle 	= 'Shop Admin Control Panel - View Users'; 
 }
 
 $script    = array('user.js');

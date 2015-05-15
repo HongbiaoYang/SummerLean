@@ -51,7 +51,7 @@ switch ($view) {
 		break;
 		
 	case 'ADD' :
-		$content 	= 'user/add.php';		
+		$content 	= 'user/add1.php';		
 		$pageTitle 	= 'Lean Summer Project - Register New Account!';
 		break;
 

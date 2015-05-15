@@ -57,7 +57,7 @@ a {text-decoration:none;}
 
 	
 	<font size="3" color="red"><?php echo $changeMessage;?></font>
-	<h5>Use your own email/password to login<br>
+	<h5>Use your own email/password to login or <a href=menu.php?v=ADD>Register</a> a free account<br>
 		  </h5>
 </div>
 <div class="span-6">&nbsp;</div>

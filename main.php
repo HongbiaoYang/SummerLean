@@ -130,7 +130,7 @@ echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/process-icon.png\" cla
 ?>
 
 
-<?php if ($_SESSION["asset_user_type"] == 1)	// only utlean see registration
+<?php //if ($_SESSION["asset_user_type"] == 1)	// only utlean see registration
 {
  echo "<div class=\"catBox\"><img src=\"".WEB_ROOT."images/create.png\" class=\"cImage\" />
 <a href=\"menu.php?v=ADD\">Create New Account</a>
